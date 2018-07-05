@@ -1,5 +1,10 @@
 @import "syntax-variables";
 
+@gold1: #F99157;
+@gold2: #e2c08d;
+@gold: #FAC863;
+@green: #99C794;
+
 atom-text-editor {
   background-color: @syntax-background-color;
   color: @syntax-text-color;
@@ -64,7 +69,7 @@ atom-text-editor.is-focused .line.cursor-line {
 }
 
 .syntax--function > .syntax--variable {
-  color: #F99157;
+  color: @gold;
 }
 
 .syntax--keyword,
@@ -112,7 +117,7 @@ atom-text-editor.is-focused .line.cursor-line {
 .syntax--variable.syntax--parameter,
 .syntax--punctuation.syntax--section.syntax--embedded,
 .syntax--keyword.syntax--other.syntax--unit {
-  color: #F99157;
+  color: @gold;
 }
 
 .syntax--string,
@@ -121,7 +126,7 @@ atom-text-editor.is-focused .line.cursor-line {
 .syntax--entity.syntax--other.syntax--inherited-class,
 .syntax--markup.syntax--heading,
 .syntax--markup.syntax--inserted.git_gutter {
-  color: #99C794;
+  color: @green;
 }
 
 .syntax--variable.syntax--constant.syntax--elixir,
@@ -134,7 +139,7 @@ atom-text-editor.is-focused .line.cursor-line {
 .syntax--meta.syntax--use.syntax--php,
 .syntax--support.syntax--other.syntax--namespace.syntax--php,
 .syntax--markup.syntax--changed.git_gutter {
-  color: #FAC863;
+  color: @gold;
 }
 
 .syntax--entity.syntax--name.syntax--module.syntax--js,
@@ -161,7 +166,7 @@ atom-text-editor.is-focused .line.cursor-line {
 }
 
 .syntax--markup.syntax--inserted {
-  color: #99C794;
+  color: @green;
 }
 
 .syntax--markup.syntax--deleted {
@@ -182,9 +187,48 @@ atom-text-editor.is-focused .line.cursor-line {
 
 .syntax--constant.syntax--character.syntax--escape.syntax--css,
 .syntax--constant.syntax--character.syntax--escape.syntax--scss  {
-  color: #99C794;
+  color: @green;
 }
 
 * .syntax--url *, * .syntax--link *, * .syntax--uri * {
   text-decoration: underline;
+}
+
+// -----------------------------------------------------------------------------
+// CUSTOM STYLES: --------------------------------------------------------------
+
+// More harmoniously colored es6 imports:
+.syntax--js {
+  &.syntax--module.syntax--control {
+    color: #5FB3B3;
+  }
+  // &.syntax--function.syntax--name {
+  //   color: #5FB3B3;
+  // }
+}
+
+// Ease scss styles on the eye slightly...
+.syntax--scss {
+  .syntax--variable {
+    color: #5FB3B3;
+  }
+  .syntax--property-name {
+    color: @green;
+  }
+  .syntax--constant {
+    color: #CDD3DE;
+
+    .syntax--unit {
+      color: white;
+    }
+  }
+}
+
+// Target functions that are passed into higher-order functions:
+// Like expect(something()) and it(something())
+.syntax--function + .syntax--brace + .syntax--function-call {
+  > .syntax--function,
+  > .syntax--brace {
+    color: #5FB3B3;
+  }
 }
