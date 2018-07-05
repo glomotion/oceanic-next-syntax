@@ -4,6 +4,7 @@
 @gold2: #e2c08d;
 @gold: #FAC863;
 @green: #99C794;
+@pink: #FF9CA8;
 
 atom-text-editor {
   background-color: @syntax-background-color;
@@ -231,4 +232,9 @@ atom-text-editor.is-focused .line.cursor-line {
   > .syntax--brace {
     color: #5FB3B3;
   }
+}
+
+// Make syntax variable coloring slightly more harmonious:
+.syntax--function > .syntax--variable {
+  color: @pink;
 }
