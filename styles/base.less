@@ -225,12 +225,23 @@ atom-text-editor.is-focused .line.cursor-line {
   }
 }
 
-// Target functions that are passed into higher-order functions:
+// Target functions that are passed into higher-order functions (2 levels deep):
 // Like expect(something()) and it(something())
-.syntax--function + .syntax--brace + .syntax--function-call {
+.syntax--function-call > .syntax--function-call {
+
   > .syntax--function,
   > .syntax--brace {
     color: #5FB3B3;
+  }
+}
+
+// Target functions that are passed into higher-order functions (3 levels deep):
+// Like expect(something(SOMETHING_ELSE())) and it(something(SOMETHING_ELSE()))
+.syntax--function-call > .syntax--function-call > .syntax--function-call {
+
+  > .syntax--function,
+  > .syntax--brace {
+    color: @green;
   }
 }
 
